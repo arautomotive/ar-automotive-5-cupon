@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b2d5c">
+  <title>AR Automotive | Beneficio exclusivo</title>
+  <style>
+    :root{
+      --navy:#0b2d5c;
+      --blue:#1556a3;
+      --light:#eef5fc;
+      --text:#17202a;
+      --muted:#667085;
+      --white:#fff;
+      --line:#dce5ef;
+      --success:#14804a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#f4f8fc 0%,#ffffff 55%);
+      min-height:100vh;
+    }
+    .wrap{max-width:560px;margin:auto;padding:22px 18px 34px}
+    .brand{text-align:center;padding:12px 0 18px}
+    .brand-mark{
+      width:64px;height:64px;border-radius:50%;margin:0 auto 10px;
+      background:var(--navy);color:#fff;display:flex;align-items:center;
+      justify-content:center;font-weight:800;font-size:19px;letter-spacing:-1px;
+      box-shadow:0 8px 22px rgba(11,45,92,.16)
+    }
+    .brand-name{font-size:23px;font-weight:800;color:var(--navy)}
+    .brand-sub{font-size:12px;color:var(--muted);margin-top:4px}
+    .card{
+      background:var(--white);border:1px solid var(--line);border-radius:24px;
+      padding:28px 22px;box-shadow:0 16px 45px rgba(11,45,92,.09);
+      text-align:center;
+    }
+    .eyebrow{
+      display:inline-block;background:var(--light);color:var(--blue);
+      border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;
+      margin-bottom:14px;
+    }
+    h1{margin:0;color:var(--navy);font-size:29px;line-height:1.12}
+    .lead{margin:10px auto 22px;max-width:420px;color:var(--muted);line-height:1.5;font-size:15px}
+    .discount{
+      font-size:58px;font-weight:900;line-height:1;color:var(--navy);
+      letter-spacing:-2px;margin:4px 0 3px
+    }
+    .discount-label{font-size:14px;font-weight:800;letter-spacing:.8px;color:var(--blue)}
+    .coupon{
+      margin:22px auto 18px;max-width:310px;border:2px dashed #b9cce1;
+      border-radius:16px;padding:15px;background:#f8fbff
+    }
+    .coupon small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:7px}
+    .code{font-size:25px;font-weight:900;letter-spacing:2px;color:var(--navy)}
+    .btn{
+      display:flex;align-items:center;justify-content:center;width:100%;
+      min-height:52px;border-radius:14px;text-decoration:none;font-weight:800;
+      font-size:16px;margin-top:12px;transition:.15s;
+    }
+    .btn-primary{background:var(--navy);color:#fff}
+    .btn-primary:hover{background:#071f40}
+    .btn-secondary{background:#eef5fc;color:var(--navy)}
+    .terms{
+      text-align:left;margin-top:23px;padding-top:18px;border-top:1px solid var(--line);
+      color:var(--muted);font-size:12px;line-height:1.55
+    }
+    .terms strong{color:var(--text)}
+    .status{margin-top:15px;color:var(--success);font-size:12px;font-weight:700}
+    footer{text-align:center;color:#8a94a3;font-size:11px;padding:18px 0 0}
+    @media(max-width:380px){
+      h1{font-size:26px}.discount{font-size:52px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="brand">
+      <div class="brand-mark">AR</div>
+      <div class="brand-name">AR Automotive</div>
+      <div class="brand-sub">Soluciones y productos para tu vehículo</div>
+    </header>
+
+    <section class="card">
+      <div class="eyebrow">BENEFICIO EXCLUSIVO</div>
+      <h1>¡Gracias por elegir AR Automotive!</h1>
+      <p class="lead">Obtén un descuento especial al realizar tu compra en nuestras publicaciones participantes de Mercado Libre.</p>
+
+      <div class="discount">5%</div>
+      <div class="discount-label">DE DESCUENTO</div>
+
+      <div class="coupon">
+        <small>Tu código de cupón</small>
+        <div class="code" id="couponCode">AR5</div>
+      </div>
+
+      <!-- CAMBIA SOLO ESTE ENLACE cuando quieras dirigir al cliente a otra publicación -->
+      <a class="btn btn-primary" id="marketplaceBtn"
+         href="https://www.mercadolibre.com.mx/" target="_blank" rel="noopener">
+        🛒 Comprar en Mercado Libre
+      </a>
+
+      <button class="btn btn-secondary" id="copyBtn" type="button">
+        📋 Copiar código
+      </button>
+
+      <div class="status" id="status">Cupón vigente</div>
+
+      <div class="terms">
+        <strong>Términos y condiciones:</strong><br>
+        Descuento válido únicamente en publicaciones participantes de AR Automotive en Mercado Libre.
+        El cupón debe aplicarse conforme a las condiciones de la promoción y disponibilidad.
+        No acumulable con otras promociones, salvo que se indique lo contrario.
+      </div>
+    </section>
+
+    <footer>AR Automotive · Promoción sujeta a vigencia y disponibilidad</footer>
+  </main>
+
+  <script>
+    // ==============================
+    // CONFIGURACIÓN DE LA PROMOCIÓN
+    // ==============================
+    // Para cambiar la promoción en el futuro, modifica estos valores.
+    const PROMO = {
+      codigo: "AR5",
+      porcentaje: "5%",
+      enlaceMercadoLibre: "https://www.mercadolibre.com.mx/",
+      estado: "Cupón vigente"
+    };
+
+    document.getElementById("couponCode").textContent = PROMO.codigo;
+    document.getElementById("marketplaceBtn").href = PROMO.enlaceMercadoLibre;
+    document.getElementById("status").textContent = PROMO.estado;
+
+    // Copiar cupón
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const btn = document.getElementById("copyBtn");
+      try {
+        await navigator.clipboard.writeText(PROMO.codigo);
+        btn.textContent = "✓ Código copiado";
+        setTimeout(() => btn.textContent = "📋 Copiar código", 1800);
+      } catch {
+        btn.textContent = "Código: " + PROMO.codigo;
+      }
+    });
+  </script>
+</body>
+</html>
